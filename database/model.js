@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/atelier')
+mongoose.connect('mongodb://127.0.0.1:27017/atelier')
   .catch((error) => console.log(error));
 mongoose.connection.on('error', (err) => {
   console.log(err);
@@ -54,6 +54,7 @@ const photos = mongoose.Schema({
 // Photo Model
 const Photo = mongoose.model('photos', photos);
 
+// skus schema
 const skus = mongoose.Schema({
   id: Number,
   styleId: Number,
@@ -64,8 +65,19 @@ const skus = mongoose.Schema({
 // Sku Model
 const Sku = mongoose.model('skus', skus);
 
+// related Schema
+const relatedproducts = mongoose.Schema({
+  id: Number,
+  current_product_id: Number,
+  related_product_id: Number,
+}, { strict: false });
+
+// RelatedProduct model
+const RelatedProduct = mongoose.model('relatedproducts', relatedproducts);
+
 module.exports.Product = Product;
 module.exports.Feature = Feature;
 module.exports.Style = Style;
 module.exports.Photo = Photo;
 module.exports.Sku = Sku;
+module.exports.RelatedProduct = RelatedProduct;
