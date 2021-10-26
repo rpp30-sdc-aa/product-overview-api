@@ -64,3 +64,8 @@ const skus = mongoose.Schema({
 // Sku Model
 const Sku = mongoose.model('skus', skus);
 
+module.exports.Product = Product;
+module.exports.Feature = Feature;
+module.exports.Style = Style;
+module.exports.Photo = Photo;
+module.exports.Sku = Sku;
