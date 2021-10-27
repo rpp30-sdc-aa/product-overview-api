@@ -75,9 +75,53 @@ const relatedproducts = mongoose.Schema({
 // RelatedProduct model
 const RelatedProduct = mongoose.model('relatedproducts', relatedproducts);
 
+// Model for all products
+const AllProduct = mongoose.model('allproducts', products);
+
+// Model for productinformations
+const productinformationsSchema = mongoose.Schema({
+  id: Number,
+  name: String,
+  slogan: String,
+  description: String,
+  category: String,
+  default_price: String,
+  features: [features],
+}, { strict: false });
+const ProductInformation = mongoose.model('productinformations', productinformationsSchema);
+
+// Model for ProductStyles
+const addedstylesSchema = {
+  id: Number,
+  productId: Number,
+  name: String,
+  sale_price: String,
+  original_price: String,
+  'default?': String,
+  photos: [photos],
+  skus: skus,
+};
+const productStylesSchema = mongoose.Schema({
+  product_id: Number,
+  results: [addedstylesSchema],
+}, { strict: false });
+const ProductStyles = mongoose.model('productstyles', productStylesSchema);
+
+// All Related Products Schema
+const allrelatedproducts = mongoose.Schema({
+  product_id: Number,
+  resuslts: [Number],
+}, { strict: false });
+
+const AllRelatedProduct = mongoose.model('allrelatedproducts', allrelatedproducts);
+
 module.exports.Product = Product;
 module.exports.Feature = Feature;
 module.exports.Style = Style;
 module.exports.Photo = Photo;
 module.exports.Sku = Sku;
 module.exports.RelatedProduct = RelatedProduct;
+module.exports.AllProduct = AllProduct;
+module.exports.ProductInformation = ProductInformation;
+module.exports.ProductStyles = ProductStyles;
+module.exports.AllRelatedProduct = AllRelatedProduct;
