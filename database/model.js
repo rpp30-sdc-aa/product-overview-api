@@ -59,7 +59,7 @@ const skus = mongoose.Schema({
   id: Number,
   styleId: Number,
   size: String,
-  quantity: String,
+  quantity: Number,
 }, { strict: false });
 
 // Sku Model
@@ -85,7 +85,7 @@ const productinformationsSchema = mongoose.Schema({
   slogan: String,
   description: String,
   category: String,
-  default_price: String,
+  default_price: Number,
   features: [features],
 }, { strict: false });
 const ProductInformation = mongoose.model('productinformations', productinformationsSchema);
@@ -95,11 +95,14 @@ const addedstylesSchema = {
   id: Number,
   productId: Number,
   name: String,
-  sale_price: String,
-  original_price: String,
+  sale_price: Number,
+  original_price: Number,
   'default?': String,
   photos: [photos],
-  skus: skus,
+  skus: {
+    type: Map,
+    of: skus,
+  },
 };
 const productStylesSchema = mongoose.Schema({
   product_id: Number,

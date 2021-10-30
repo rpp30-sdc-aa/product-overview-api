@@ -6,6 +6,7 @@ module.exports.getProductStyles = (req, res) => {
     if (error) {
       res.status(500).send('Sorry Data could not be found');
     } else {
+      console.log('ProductStylesssssssss: ', productInfo.results[productInfo.results.length - 1]);
       res.status(200).send(productInfo);
     }
   });
