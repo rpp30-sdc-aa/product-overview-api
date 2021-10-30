@@ -97,7 +97,7 @@ const addedstylesSchema = {
   name: String,
   sale_price: Number,
   original_price: Number,
-  'default?': String,
+  'default?': Boolean,
   photos: [photos],
   skus: {
     type: Map,
