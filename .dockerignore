@@ -1,0 +1,4 @@
+MongoDB_ETL
+node_modules
+coverage
+.gitignore
