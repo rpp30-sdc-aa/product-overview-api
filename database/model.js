@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/atelier')
+mongoose.connect(`mongodb://${process.env.USERNAME}:${process.env.PASSWORD}@54.242.118.119:27017/atelier?authSource=admin`)
   .catch((error) => console.log(error));
 mongoose.connection.on('error', (err) => {
   console.log(err);
@@ -113,7 +113,7 @@ const ProductStyles = mongoose.model('productstyles', productStylesSchema);
 // All Related Products Schema
 const allrelatedproducts = mongoose.Schema({
   product_id: Number,
-  resuslts: [Number],
+  results: [Number],
 }, { strict: false });
 
 const AllRelatedProduct = mongoose.model('allrelatedproducts', allrelatedproducts);

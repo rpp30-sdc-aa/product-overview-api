@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config();
 const database = require('./database/dataMigration');
 const productController = require('./controllers/getProducts');
 const productInfoController = require('./controllers/getProductInformation');
