@@ -34,7 +34,7 @@ export const options = {
     { duration: '1m', target: 0 },
   ],
   // vus: 1500,
-  // duration: '3m',
+  // duration: '1m',
 };
 
 // Test scenario

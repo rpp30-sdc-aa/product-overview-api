@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
+const logger = require('../logs/logger');
 
 mongoose.connect(`mongodb://${process.env.USERNAME}:${process.env.PASSWORD}@54.242.118.119:27017/atelier?authSource=admin`)
-  .catch((error) => console.log(error));
+  .catch((error) => {
+    logger.error(error);
+  });
 mongoose.connection.on('error', (err) => {
-  console.log(err);
+  logger.error(err);
 });
 
 // products Schema
