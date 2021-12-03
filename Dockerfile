@@ -14,6 +14,8 @@ COPY . .
 
 RUN npm install pm2 -g
 
+ENV NEW_RELIC_TURN=ON
+
 EXPOSE 3333
 
-CMD ["pm2-runtime", "server.js"]
+CMD ["npm", "start"]

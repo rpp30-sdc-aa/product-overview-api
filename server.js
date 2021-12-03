@@ -1,6 +1,9 @@
+require('dotenv').config();
+if (process.env.NEW_RELIC_TURN === 'ON') {
+  const newrelic = require('newrelic');
+}
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
 const database = require('./database/dataMigration');
 const productController = require('./controllers/getProducts');
 const productInfoController = require('./controllers/getProductInformation');
@@ -11,6 +14,7 @@ const app = express();
 const port = 3333;
 
 app.use(cors());
+app.use(express.static('public'));
 
 database.migrateData()
   .then((done) => {

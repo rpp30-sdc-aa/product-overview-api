@@ -6,7 +6,7 @@ module.exports.getProducts = (req, res) => {
   count = Number(count) || 5;
   db.AllProduct.find({}).skip((page - 1) * 10).limit(count).exec((error, products) => {
     if (error) {
-      res.status(500).send('Sorry Data could not be found');
+      res.status(500).send(error);
     } else {
       res.status(200).send(products);
     }
